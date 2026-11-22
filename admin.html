@@ -254,6 +254,97 @@
       renderBookings();
     }
   </script>
+
+<div id="khcAdminExtras" style="max-width:960px;margin:28px auto;padding:20px;border:1px solid #cbd5e1;border-radius:10px;background:#ffffff;font-family:Arial,sans-serif;">
+  <h3 style="margin-top:0;color:#0f294a;">Complaints Received</h3>
+  <div id="adminComplaintsList"></div>
+
+  <h3 style="margin-top:24px;color:#0f294a;">Website Ratings &amp; Feedback</h3>
+  <div id="adminRatingsSummary" style="font-weight:600;margin-bottom:10px;"></div>
+  <div id="adminRatingsList"></div>
+</div>
+
+<script>
+(function() {
+  const C_KEY = "khc_complaints_v1";
+  const R_KEY = "khc_ratings_v1";
+
+  function readList(k) {
+    try {
+      const d = JSON.parse(localStorage.getItem(k) || "[]");
+      return Array.isArray(d) ? d : [];
+    } catch (e) {
+      return [];
+    }
+  }
+
+  function writeList(k, v) {
+    localStorage.setItem(k, JSON.stringify(v));
+  }
+
+  function esc(s) {
+    return String(s || "")
+      .replace(/&/g, "&amp;")
+      .replace(/</g, "&lt;")
+      .replace(/>/g, "&gt;")
+      .replace(/"/g, "&quot;");
+  }
+
+  window.khcRenderAdminExtras = function() {
+    const cBox = document.getElementById("adminComplaintsList");
+    const rSum = document.getElementById("adminRatingsSummary");
+    const rBox = document.getElementById("adminRatingsList");
+    if (!cBox || !rSum || !rBox) return;
+
+    const complaints = readList(C_KEY);
+    if (!complaints.length) {
+      cBox.innerHTML = "<p>Abhi koi complaint darj nahi hai.</p>";
+    } else {
+      cBox.innerHTML = complaints.map(c => `
+        <div style="border:1px solid #cbd5e1;border-radius:8px;padding:12px;margin-bottom:10px;background:#f8fafc;">
+          <strong>${esc(c.id)}</strong> — <strong>${esc(c.name)}</strong> (${esc(c.phone)})
+          <div style="font-size:13px;margin-top:4px;"><em>Category:</em> ${esc(c.category)} | <em>Status:</em> <strong>${esc(c.status)}</strong> | <em>Date:</em> ${esc(c.createdAt)}</div>
+          <p style="margin:8px 0;">${esc(c.details)}</p>
+          <button type="button" onclick="khcToggleComplaint('${esc(c.id)}')">Mark ${c.status === "Open" ? "Resolved" : "Open"}</button>
+          <button type="button" onclick="khcDeleteComplaint('${esc(c.id)}')" style="margin-left:8px;">Delete</button>
+        </div>
+      `).join("");
+    }
+
+    const ratings = readList(R_KEY);
+    if (!ratings.length) {
+      rSum.textContent = "Average Rating: 0.0 / 5 (0 ratings)";
+      rBox.innerHTML = "<p>Abhi koi rating nahi aayi hai.</p>";
+    } else {
+      const avg = ratings.reduce((s, r) => s + Number(r.stars || 0), 0) / ratings.length;
+      rSum.textContent = `Average Rating: ${avg.toFixed(1)} / 5 (${ratings.length} ratings)`;
+      rBox.innerHTML = ratings.map(r => `
+        <div style="border:1px solid #e2e8f0;border-radius:8px;padding:10px;margin-bottom:8px;background:#f8fafc;">
+          <strong>${"★".repeat(Number(r.stars || 0))}</strong> (${esc(r.stars)}/5) — <small>${esc(r.createdAt)}</small>
+          <div>${esc(r.note || "No written note")}</div>
+        </div>
+      `).join("");
+    }
+  };
+
+  window.khcToggleComplaint = function(id) {
+    const list = readList(C_KEY).map(item =>
+      item.id === id ? { ...item, status: item.status === "Open" ? "Resolved" : "Open" } : item
+    );
+    writeList(C_KEY, list);
+    window.khcRenderAdminExtras();
+  };
+
+  window.khcDeleteComplaint = function(id) {
+    const list = readList(C_KEY).filter(item => item.id !== id);
+    writeList(C_KEY, list);
+    window.khcRenderAdminExtras();
+  };
+
+  window.khcRenderAdminExtras();
+})();
+</script>
+
 </body>
 </html>
 
