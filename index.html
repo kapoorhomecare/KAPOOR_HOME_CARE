@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Kapoor Home Care — 24*7 Home Healthcare in Faridabad</title>
+  <style>
+    :root {
+      --navy: #002b5b;
+      --red: #d32f2f;
+      --bg: #f4f7fb;
+      --card: #ffffff;
+      --text: #1b2430;
+      --muted: #556270;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; font-family: Arial, sans-serif; }
+    body { background: var(--bg); color: var(--text); line-height: 1.5; }
+    header {
+      background: var(--navy); color: #fff; padding: 14px 20px;
+      display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 10px;
+    }
+    .brand { font-size: 20px; font-weight: bold; }
+    .brand span { color: #ff6b6b; }
+    .top-actions a, .top-actions button {
+      background: var(--red); color: #fff; border: none; padding: 8px 14px;
+      border-radius: 6px; text-decoration: none; font-weight: bold; cursor: pointer; font-size: 14px;
+    }
+    .hero {
+      background: linear-gradient(135deg, var(--navy), #094587);
+      color: #fff; padding: 36px 20px; text-align: center;
+    }
+    .hero h1 { font-size: 28px; margin-bottom: 8px; }
+    .hero p { font-size: 16px; margin-bottom: 16px; opacity: 0.95; }
+    .badge {
+      display: inline-block; background: var(--red); color: #fff;
+      padding: 6px 14px; border-radius: 20px; font-weight: bold; font-size: 13px; margin-bottom: 14px;
+    }
+    .container { max-width: 1000px; margin: 24px auto; padding: 0 16px; }
+    .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 16px; margin-bottom: 28px; }
+    .card {
+      background: var(--card); border-radius: 10px; padding: 18px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.06); border-top: 4px solid var(--navy);
+    }
+    .card h3 { color: var(--navy); margin-bottom: 6px; font-size: 17px; }
+    .card p { color: var(--muted); font-size: 14px; }
+    .booking-box, .admin-box {
+      background: var(--card); border-radius: 10px; padding: 20px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.06); margin-bottom: 24px;
+    }
+    h2 { color: var(--navy); margin-bottom: 14px; font-size: 21px; }
+    form { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 12px; }
+    input, select, textarea {
+      width: 100%; padding: 10px; border: 1px solid #cbd5e1; border-radius: 6px; font-size: 14px;
+    }
+    .btn-primary {
+      background: var(--navy); color: #fff; border: none; padding: 11px 16px;
+      border-radius: 6px; font-weight: bold; cursor: pointer;
+    }
+    .btn-wa {
+      background: #1ea952; color: #fff; border: none; padding: 11px 16px;
+      border-radius: 6px; font-weight: bold; cursor: pointer;
+    }
+    footer {
+      background: var(--navy); color: #fff; text-align: center;
+      padding: 18px; font-size: 14px; margin-top: 30px;
+    }
+    #adminPanel { display: none; margin-top: 14px; }
+    table { width: 100%; border-collapse: collapse; margin-top: 12px; font-size: 14px; }
+    th, td { border: 1px solid #e2e8f0; padding: 8px; text-align: left; }
+    th { background: #eef3f9; color: var(--navy); }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="brand">KAPOOR <span>HOME CARE</span></div>
+    <div class="top-actions">
+      <a href="tel:6397053265">Call: 6397053265</a>
+      <button type="button" onclick="toggleAdmin()">Admin Panel</button>
+    </div>
+  </header>
+
+  <section class="hero">
+    <div class="badge">24*7 SERVICE • FARIDABAD</div>
+    <h1>Care at Home, Comfort with Dignity</h1>
+    <p>Professional Home Healthcare Services in Faridabad • Your Health, Our Priority</p>
+    <a href="#book" style="display:inline-block;background:#d32f2f;color:#fff;padding:10px 20px;border-radius:6px;text-decoration:none;font-weight:bold;">Book Care Now</a>
+  </section>
+
+  <main class="container">
+    <h2>Our Specialized & Home Care Services</h2>
+    <div class="grid">
+      <div class="card"><h3>ICU & Ventilator Management Care</h3><p>Critical care monitoring and ventilator support at home in Faridabad.</p></div>
+      <div class="card"><h3>IV Injection & Dressing</h3><p>Safe intravenous injections, infusions, and sterile wound dressing.</p></div>
+      <div class="card"><h3>Medications Management</h3><p>Timely medicine schedules, dosage guidance, and routine tracking.</p></div>
+      <div class="card"><h3>Urinary Catheter Care</h3><p>Hygienic catheter care, maintenance, and timely replacement support.</p></div>
+      <div class="card"><h3>Tracheostomy & Feeding Care</h3><p>Specialized airway and feeding tube care by trained staff.</p></div>
+      <div class="card"><h3>Nursing, Elderly & Equipment</h3><p>Nursing care, elderly care, patient attendant, physiotherapy & medical equipment.</p></div>
+    </div>
+
+    <section id="book" class="booking-box">
+      <h2>Book Home Care Service (Faridabad)</h2>
+      <form id="bookingForm" onsubmit="submitBooking(event)">
+        <input type="text" id="patientName" placeholder="Patient Name" required />
+        <input type="tel" id="patientPhone" placeholder="Contact Number" required />
+        <select id="serviceSelect" required>
+          <option value="">Select Service</option>
+          <option>ICU & Ventilator Management Care</option>
+          <option>IV Injection & Dressing</option>
+          <option>Medications Management</option>
+          <option>Urinary Catheter Care</option>
+          <option>Tracheostomy & Feeding Care</option>
+          <option>Nursing & Elderly Care</option>
+        </select>
+        <input type="text" id="areaInput" placeholder="Faridabad Sector / Locality" required />
+        <button type="submit" class="btn-primary">Save Booking</button>
+        <button type="button" class="btn-wa" onclick="sendWhatsApp()">Book via WhatsApp</button>
+      </form>
+      <p id="bookingMsg" style="margin-top:10px;color:#15803d;font-weight:bold;"></p>
+    </section>
+
+    <section class="admin-box">
+      <h2>Admin Panel (PIN: 1234)</h2>
+      <div id="pinBox" style="display:flex;gap:10px;max-width:320px;">
+        <input type="password" id="pinInput" placeholder="Enter PIN (1234)" maxlength="6" />
+        <button type="button" class="btn-primary" onclick="unlockAdmin()">Unlock</button>
+      </div>
+      <div id="adminPanel">
+        <p style="margin-top:8px;color:#556270;">Saved Bookings (Browser Local Storage):</p>
+        <table>
+          <thead>
+            <tr><th>Patient</th><th>Phone</th><th>Service</th><th>Area</th></tr>
+          </thead>
+          <tbody id="bookingRows"></tbody>
+        </table>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    Kapoor Home Care • Faridabad • Phone: 6397053265 • 24*7 Service • Your Health, Our Priority
+  </footer>
+
+  <script>
+    const PHONE = "6397053265";
+    function getBookings() {
+      return JSON.parse(localStorage.getItem("khc_bookings") || "[]");
+    }
+    function renderBookings() {
+      const tbody = document.getElementById("bookingRows");
+      const list = getBookings();
+      if (!list.length) {
+        tbody.innerHTML = "<tr><td colspan='4'>No bookings yet.</td></tr>";
+        return;
+      }
+      tbody.innerHTML = list.map(b =>
+        `<tr><td>${b.name}</td><td>${b.phone}</td><td>${b.service}</td><td>${b.area}</td></tr>`
+      ).join("");
+    }
+    function submitBooking(e) {
+      e.preventDefault();
+      const entry = {
+        name: document.getElementById("patientName").value.trim(),
+        phone: document.getElementById("patientPhone").value.trim(),
+        service: document.getElementById("serviceSelect").value,
+        area: document.getElementById("areaInput").value.trim()
+      };
+      const list = getBookings();
+      list.unshift(entry);
+      localStorage.setItem("khc_bookings", JSON.stringify(list));
+      document.getElementById("bookingMsg").textContent = "Booking saved! You can also send on WhatsApp or call 6397053265.";
+      document.getElementById("bookingForm").reset();
+      renderBookings();
+    }
+    function sendWhatsApp() {
+      const name = document.getElementById("patientName").value.trim() || "Patient";
+      const phone = document.getElementById("patientPhone").value.trim() || "-";
+      const service = document.getElementById("serviceSelect").value || "Home Care Service";
+      const area = document.getElementById("areaInput").value.trim() || "Faridabad";
+      const text = encodeURIComponent(`Hello Kapoor Home Care (Faridabad), booking request:%0APatient: ${name}%0APhone: ${phone}%0AService: ${service}%0ALocation: ${area}`);
+      window.open(`https://wa.me/91${PHONE}?text=${text}`, "_blank");
+    }
+    function unlockAdmin() {
+      if (document.getElementById("pinInput").value === "1234") {
+        document.getElementById("adminPanel").style.display = "block";
+        renderBookings();
+      } else {
+        alert("Wrong PIN. Default PIN is 1234.");
+      }
+    }
+    function toggleAdmin() {
+      document.getElementById("pinInput").scrollIntoView({ behavior: "smooth" });
+    }
+  </script>
+</body>
+</html>
