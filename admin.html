@@ -92,10 +92,10 @@
     }
     textarea { min-height: 76px; resize: vertical; }
     input[type="password"] {
-      padding: 12px;
-      font-size: 1.2rem;
-      letter-spacing: 6px;
-      text-align: center;
+      padding: 12px 14px;
+      font-size: 1rem;
+      letter-spacing: 1px;
+      text-align: left;
       margin: 14px 0;
     }
     .btn {
@@ -859,7 +859,7 @@
   </div>
 
   <script>
-    const ADMIN_PIN = "1234";
+    const ADMIN_PIN = "Kapoor@7248";
     const STORAGE_KEY = "khc_bookings";
 
     function esc(str) {
@@ -919,15 +919,33 @@
       return `KHC-${yr}-${seq}`;
     }
 
+    let failedAttempts = 0;
+    let lockUntil = 0;
+
     function verifyPin() {
-      const pin = document.getElementById("pinInput").value.trim();
       const err = document.getElementById("pinError");
+      const now = Date.now();
+      if (now < lockUntil) {
+        const secs = Math.ceil((lockUntil - now) / 1000);
+        err.textContent = `Too many attempts. Try again in ${secs}s.`;
+        return;
+      }
+      const pin = document.getElementById("pinInput").value;
       if (pin === ADMIN_PIN) {
+        failedAttempts = 0;
+        lockUntil = 0;
         sessionStorage.setItem("khc_admin_auth", "1");
         err.textContent = "";
         showDashboard();
       } else {
-        err.textContent = "Invalid PIN. Please try again.";
+        failedAttempts += 1;
+        if (failedAttempts >= 5) {
+          lockUntil = Date.now() + 30000;
+          failedAttempts = 0;
+          err.textContent = "5 wrong attempts. Locked for 30 seconds.";
+        } else {
+          err.textContent = `Invalid password (${failedAttempts}/5). Please try again.`;
+        }
       }
     }
 
