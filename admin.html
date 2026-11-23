@@ -372,6 +372,57 @@
         </div>
       </div>
 
+      <div class="card" id="staffCard">
+        <div class="top-bar">
+          <h2>
+            <svg class="icon-lg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+            Staff &amp; Caregiver Records (<span id="staffCount">0</span>)
+          </h2>
+          <div class="actions">
+            <button class="btn btn-teal btn-sm" type="button" onclick="openStaffModal(null)">
+              <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+              Add Staff Record
+            </button>
+            <button class="btn btn-navy btn-sm" type="button" onclick="renderStaff()">
+              <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="23 4 23 10 17 10"/><path d="M20.49 15a9 9 0 1 1-2.12-9.36L23 10"/></svg>
+              Refresh Staff
+            </button>
+          </div>
+        </div>
+
+        <div class="stats-grid" id="staffStats"></div>
+
+        <div style="overflow-x:auto;">
+          <table>
+            <thead>
+              <tr>
+                <th>
+                  <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+                  Staff ID &amp; Name
+                </th>
+                <th>
+                  <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+                  Phone &amp; Role
+                </th>
+                <th>
+                  <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+                  Shift &amp; Duty
+                </th>
+                <th>
+                  <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+                  Status
+                </th>
+                <th>
+                  <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 2.83-2.83l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg>
+                  Actions
+                </th>
+              </tr>
+            </thead>
+            <tbody id="staffBody"></tbody>
+          </table>
+        </div>
+      </div>
+
       <div class="card" id="complaintsCard">
         <h3 class="section-title">
           <svg class="icon-lg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
@@ -465,7 +516,8 @@
           </div>
           <div class="field">
             <label for="fStaffAssigned">Assigned Caregiver / Staff</label>
-            <input type="text" id="fStaffAssigned" placeholder="Assigned nurse/attendant name" />
+            <input type="text" id="fStaffAssigned" list="staffNameOptions" placeholder="Select or type nurse/attendant name" />
+            <datalist id="staffNameOptions"></datalist>
           </div>
         </div>
         <div class="field" style="margin-bottom:10px;">
@@ -515,6 +567,103 @@
             <button class="btn btn-navy" type="submit">
               <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11l5 5v11a2 2 0 0 1-2 2z"/><polyline points="17 21 17 13 7 13 7 21"/><polyline points="7 3 7 8 15 8"/></svg>
               Save Admission File
+            </button>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- Staff Record Modal -->
+  <div class="modal-backdrop" id="staffModal" role="dialog" aria-modal="true" aria-labelledby="staffModalTitle">
+    <div class="modal-card">
+      <div class="modal-head">
+        <h3 id="staffModalTitle">
+          <svg class="icon-lg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+          Staff Record
+        </h3>
+        <button class="btn btn-light btn-sm no-print" type="button" onclick="closeStaffModal()">
+          <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+          Close
+        </button>
+      </div>
+
+      <form id="staffForm" onsubmit="saveStaffRecord(event)">
+        <input type="hidden" id="editStaffIndex" value="-1" />
+
+        <div class="file-block-title">
+          <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+          1. Staff Identity &amp; Role
+        </div>
+        <div class="form-grid">
+          <div class="field">
+            <label for="sCode">Staff ID</label>
+            <input type="text" id="sCode" readonly />
+          </div>
+          <div class="field">
+            <label for="sStatus">Duty Status</label>
+            <select id="sStatus">
+              <option value="Active / On Duty">Active / On Duty</option>
+              <option value="Available">Available</option>
+              <option value="On Leave">On Leave</option>
+              <option value="Inactive">Inactive</option>
+            </select>
+          </div>
+          <div class="field">
+            <label for="sName">Staff Full Name *</label>
+            <input type="text" id="sName" required placeholder="Full name" />
+          </div>
+          <div class="field">
+            <label for="sPhone">Mobile Number *</label>
+            <input type="text" id="sPhone" required placeholder="10-digit mobile number" />
+          </div>
+          <div class="field">
+            <label for="sRole">Role / Qualification</label>
+            <input type="text" id="sRole" placeholder="e.g., ICU Nurse / GNM / Caregiver" />
+          </div>
+          <div class="field">
+            <label for="sJoiningDate">Joining Date</label>
+            <input type="date" id="sJoiningDate" />
+          </div>
+        </div>
+
+        <div class="file-block-title">
+          <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+          2. Shift, Assignment &amp; Verification Notes
+        </div>
+        <div class="form-grid">
+          <div class="field">
+            <label for="sShift">Shift / Duty Timing</label>
+            <input type="text" id="sShift" placeholder="e.g., 12-Hr Day / 24-Hr Live-in" />
+          </div>
+          <div class="field">
+            <label for="sAssignedPatient">Current Patient / Locality</label>
+            <input type="text" id="sAssignedPatient" placeholder="e.g., Sector 15 / Patient Name" />
+          </div>
+          <div class="field">
+            <label for="sIdRef">ID / Document Ref. (Optional)</label>
+            <input type="text" id="sIdRef" placeholder="Last 4 digits or reference note" />
+          </div>
+          <div class="field">
+            <label for="sAddress">Home / Local Address</label>
+            <input type="text" id="sAddress" placeholder="Locality / city" />
+          </div>
+        </div>
+        <div class="field">
+          <label for="sNotes">Duty / Performance / Verification Notes</label>
+          <textarea id="sNotes" placeholder="Experience, shift remarks, verification status, or duty notes..."></textarea>
+        </div>
+
+        <div class="modal-footer no-print">
+          <button class="btn btn-light" type="button" onclick="window.print()">
+            <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 6 2 18 2 18 9"/><path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"/><rect x="6" y="14" width="12" height="8"/></svg>
+            Print Record
+          </button>
+          <div style="display:flex;gap:8px;flex-wrap:wrap;">
+            <button class="btn btn-light" type="button" onclick="closeStaffModal()">Cancel</button>
+            <button class="btn btn-navy" type="submit">
+              <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11l5 5v11a2 2 0 0 1-2 2z"/><polyline points="17 21 17 13 7 13 7 21"/><polyline points="7 3 7 8 15 8"/></svg>
+              Save Staff Record
             </button>
           </div>
         </div>
@@ -606,6 +755,7 @@
       document.getElementById("loginCard").style.display = "none";
       document.getElementById("dashboard").style.display = "block";
       renderBookings();
+      renderStaff();
       renderAdminComplaintsAndRatings();
     }
 
@@ -895,6 +1045,198 @@
           </div>
         `).join("");
       }
+    }
+
+    const STAFF_STORAGE_KEY = "khc_staff_v1";
+
+    function getStaffRecords() {
+      try {
+        const list = JSON.parse(localStorage.getItem(STAFF_STORAGE_KEY) || "[]");
+        return Array.isArray(list) ? list : [];
+      } catch {
+        return [];
+      }
+    }
+
+    function saveStaffRecords(list) {
+      localStorage.setItem(STAFF_STORAGE_KEY, JSON.stringify(list));
+      syncStaffOptions();
+    }
+
+    function nextStaffCode(list) {
+      const yr = new Date().getFullYear();
+      const seq = String((list.length || 0) + 1).padStart(3, "0");
+      return `STF-${yr}-${seq}`;
+    }
+
+    function syncStaffOptions() {
+      const dl = document.getElementById("staffNameOptions");
+      if (!dl) return;
+      const list = getStaffRecords();
+      dl.innerHTML = list.map(s => {
+        const label = s.role ? `${s.name} (${s.role})` : s.name;
+        return `<option value="${esc(label)}"></option>`;
+      }).join("");
+    }
+
+    function staffStatusBadge(status) {
+      const s = status || "Active / On Duty";
+      if (s === "Active / On Duty") return `<span class="badge active-care">Active / On Duty</span>`;
+      if (s === "Available") return `<span class="badge confirmed">Available</span>`;
+      if (s === "On Leave") return `<span class="badge pending">On Leave</span>`;
+      return `<span class="badge discharged">Inactive</span>`;
+    }
+
+    function renderStaffStats(list) {
+      const total = list.length;
+      const onDuty = list.filter(s => (s.status || "Active / On Duty") === "Active / On Duty").length;
+      const available = list.filter(s => s.status === "Available").length;
+      const onLeave = list.filter(s => s.status === "On Leave").length;
+
+      document.getElementById("staffStats").innerHTML = `
+        <div class="stat-box">
+          <div class="stat-label">Total Staff Records</div>
+          <div class="stat-val">${total}</div>
+        </div>
+        <div class="stat-box">
+          <div class="stat-label">Active / On Duty</div>
+          <div class="stat-val">${onDuty}</div>
+        </div>
+        <div class="stat-box">
+          <div class="stat-label">Available for Duty</div>
+          <div class="stat-val">${available}</div>
+        </div>
+        <div class="stat-box">
+          <div class="stat-label">On Leave</div>
+          <div class="stat-val">${onLeave}</div>
+        </div>
+      `;
+    }
+
+    function renderStaff() {
+      syncStaffOptions();
+      const list = getStaffRecords();
+      const countEl = document.getElementById("staffCount");
+      if (countEl) countEl.textContent = list.length;
+      renderStaffStats(list);
+      const tbody = document.getElementById("staffBody");
+      if (!tbody) return;
+
+      if (!list.length) {
+        tbody.innerHTML = `<tr><td colspan="5" class="empty">No staff records saved yet. Click "Add Staff Record" to create a nurse, attendant, or caregiver entry.</td></tr>`;
+        return;
+      }
+
+      tbody.innerHTML = list.map((s, idx) => {
+        const code = esc(s.code || `STF-${idx + 1}`);
+        const name = esc(s.name || "Staff Member");
+        const phone = esc(s.phone || "-");
+        const role = esc(s.role || "Care Staff");
+        const shift = esc(s.shift || "-");
+        const assigned = esc(s.assignedPatient || "Unassigned");
+
+        return `
+          <tr>
+            <td>
+              <strong>${code}</strong><br/>
+              <strong>${name}</strong>
+              ${s.joiningDate ? `<br/><span style="color:var(--muted);font-size:0.8rem;">Joined: ${esc(s.joiningDate)}</span>` : ""}
+            </td>
+            <td>
+              ${phone}<br/>
+              <span>${role}</span>
+            </td>
+            <td>
+              <strong>Shift:</strong> ${shift}<br/>
+              <span style="color:var(--muted);font-size:0.8rem;"><strong>Duty:</strong> ${assigned}</span>
+            </td>
+            <td>${staffStatusBadge(s.status)}</td>
+            <td style="white-space:nowrap;">
+              <button class="btn btn-teal btn-sm" type="button" onclick="openStaffModal(${idx})">
+                <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"/><path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"/></svg>
+                Edit
+              </button>
+              <button class="btn btn-red btn-sm" type="button" onclick="deleteStaffRecord(${idx})">
+                <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="3 6 5 6 21 6"/><path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"/></svg>
+                Delete
+              </button>
+            </td>
+          </tr>
+        `;
+      }).join("");
+    }
+
+    function openStaffModal(idx) {
+      const list = getStaffRecords();
+      const form = document.getElementById("staffForm");
+      form.reset();
+      document.getElementById("editStaffIndex").value = idx === null || idx === undefined ? "-1" : String(idx);
+
+      if (idx !== null && idx !== undefined && list[idx]) {
+        const s = list[idx];
+        document.getElementById("sCode").value = s.code || `STF-${idx + 1}`;
+        document.getElementById("sStatus").value = s.status || "Active / On Duty";
+        document.getElementById("sName").value = s.name || "";
+        document.getElementById("sPhone").value = s.phone || "";
+        document.getElementById("sRole").value = s.role || "";
+        document.getElementById("sJoiningDate").value = s.joiningDate || "";
+        document.getElementById("sShift").value = s.shift || "";
+        document.getElementById("sAssignedPatient").value = s.assignedPatient || "";
+        document.getElementById("sIdRef").value = s.idRef || "";
+        document.getElementById("sAddress").value = s.address || "";
+        document.getElementById("sNotes").value = s.notes || "";
+      } else {
+        document.getElementById("sCode").value = nextStaffCode(list);
+        document.getElementById("sStatus").value = "Active / On Duty";
+      }
+
+      document.getElementById("staffModal").classList.add("open");
+    }
+
+    function closeStaffModal() {
+      document.getElementById("staffModal").classList.remove("open");
+    }
+
+    function saveStaffRecord(event) {
+      event.preventDefault();
+      const list = getStaffRecords();
+      const idx = Number(document.getElementById("editStaffIndex").value);
+      const existing = idx >= 0 && list[idx] ? list[idx] : {};
+
+      const record = {
+        ...existing,
+        code: document.getElementById("sCode").value.trim() || nextStaffCode(list),
+        status: document.getElementById("sStatus").value,
+        name: document.getElementById("sName").value.trim(),
+        phone: document.getElementById("sPhone").value.trim(),
+        role: document.getElementById("sRole").value.trim(),
+        joiningDate: document.getElementById("sJoiningDate").value,
+        shift: document.getElementById("sShift").value.trim(),
+        assignedPatient: document.getElementById("sAssignedPatient").value.trim(),
+        idRef: document.getElementById("sIdRef").value.trim(),
+        address: document.getElementById("sAddress").value.trim(),
+        notes: document.getElementById("sNotes").value.trim(),
+        updatedAt: new Date().toISOString()
+      };
+
+      if (idx >= 0 && list[idx]) {
+        list[idx] = record;
+      } else {
+        record.createdAt = new Date().toISOString();
+        list.unshift(record);
+      }
+
+      saveStaffRecords(list);
+      closeStaffModal();
+      renderStaff();
+    }
+
+    function deleteStaffRecord(idx) {
+      const list = getStaffRecords();
+      if (!list[idx]) return;
+      list.splice(idx, 1);
+      saveStaffRecords(list);
+      renderStaff();
     }
 
     document.getElementById("pinInput").addEventListener("keydown", e => {
