@@ -1579,5 +1579,135 @@
       showDashboard();
     }
   </script>
+<!-- Kapoor Home Care: Patient File & Consent Status Panel -->
+<div id="patient-file-panel" class="card" style="display:none; margin-top:16px; padding:16px; border:1px solid #d0d7de; border-radius:10px; background:#ffffff;">
+  <div style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:8px;">
+    <div>
+      <h3 style="margin:0; font-size:16px;">Patient File &amp; Consent Status</h3>
+      <small id="pf-patient-meta" style="color:#57606a;">Active Record: general-file</small>
+    </div>
+    <div style="display:flex; gap:8px; flex-wrap:wrap;">
+      <button type="button" onclick="savePatientFileStatus()" style="padding:8px 14px; border:none; border-radius:6px; background:#0f766e; color:#fff; cursor:pointer;">
+        Save File Status
+      </button>
+      <button type="button" onclick="printPatientFileChecklist()" style="padding:8px 14px; border:1px solid #0f766e; border-radius:6px; background:#fff; color:#0f766e; cursor:pointer;">
+        Print Summary
+      </button>
+    </div>
+  </div>
+
+  <hr style="margin:12px 0; border:0; border-top:1px solid #eaeef2;">
+
+  <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(220px, 1fr)); gap:12px;">
+    <label style="display:flex; align-items:center; gap:8px;">
+      <input type="checkbox" id="consent-general">
+      <span>General Home Care Consent</span>
+    </label>
+
+    <label style="display:flex; align-items:center; gap:8px;">
+      <input type="checkbox" id="consent-high-risk">
+      <span>High-Risk Care Consent</span>
+    </label>
+
+    <label style="display:flex; align-items:center; gap:8px;">
+      <input type="checkbox" id="consent-blood">
+      <span>Blood / Blood Product Consent</span>
+    </label>
+
+    <label style="display:flex; align-items:center; gap:8px;">
+      <input type="checkbox" id="file-assessment-vitals">
+      <span>Care Assessment &amp; Daily Vitals</span>
+    </label>
+
+    <label style="display:flex; align-items:center; gap:8px;">
+      <input type="checkbox" id="file-med-fluid-log">
+      <span>Medication, IV/Fluid &amp; Transfusion Log</span>
+    </label>
+  </div>
+
+  <div style="margin-top:12px;">
+    <label for="pf-notes" style="display:block; font-size:13px; margin-bottom:4px; color:#24292f;">
+      File / Consent Remarks (Allergies, Doctor Note, Blood Unit / Shift Note)
+    </label>
+    <textarea id="pf-notes" rows="2" placeholder="Remarks darj karein..." style="width:100%; padding:8px; border:1px solid #d0d7de; border-radius:6px;"></textarea>
+  </div>
+</div>
+<script>
+(function() {
+  const FILE_STATUS_STORAGE_KEY = "khc_patient_file_status_v1";
+  let activePatientKey = "general-file";
+
+  function getAllFileStatuses() {
+    try {
+      return JSON.parse(localStorage.getItem(FILE_STATUS_STORAGE_KEY) || "{}");
+    } catch (e) {
+      return {};
+    }
+  }
+
+  function isDashboardVisible() {
+    const dash = document.getElementById("dashboard");
+    if (!dash) return true;
+    const style = window.getComputedStyle(dash);
+    return style.display !== "none" && style.visibility !== "hidden";
+  }
+
+  window.openPatientFilePanel = function(patientKey, patientLabel) {
+    activePatientKey = patientKey || "general-file";
+    const panel = document.getElementById("patient-file-panel");
+    const meta = document.getElementById("pf-patient-meta");
+    const allStatuses = getAllFileStatuses();
+    const current = allStatuses[activePatientKey] || {};
+
+    if (panel) {
+      panel.style.display = isDashboardVisible() ? "block" : "none";
+    }
+    if (meta) {
+      meta.textContent = patientLabel
+        ? `Record: ${patientLabel} (ID: ${activePatientKey})`
+        : `Record ID: ${activePatientKey}`;
+    }
+
+    document.getElementById("consent-general").checked = Boolean(current.generalConsent);
+    document.getElementById("consent-high-risk").checked = Boolean(current.highRiskConsent);
+    document.getElementById("consent-blood").checked = Boolean(current.bloodConsent);
+    document.getElementById("file-assessment-vitals").checked = Boolean(current.assessmentVitals);
+    document.getElementById("file-med-fluid-log").checked = Boolean(current.medFluidLog);
+    document.getElementById("pf-notes").value = current.notes || "";
+  };
+
+  window.savePatientFileStatus = function() {
+    const allStatuses = getAllFileStatuses();
+    allStatuses[activePatientKey] = {
+      generalConsent: document.getElementById("consent-general").checked,
+      highRiskConsent: document.getElementById("consent-high-risk").checked,
+      bloodConsent: document.getElementById("consent-blood").checked,
+      assessmentVitals: document.getElementById("file-assessment-vitals").checked,
+      medFluidLog: document.getElementById("file-med-fluid-log").checked,
+      notes: document.getElementById("pf-notes").value.trim(),
+      updatedAt: new Date().toISOString()
+    };
+    localStorage.setItem(FILE_STATUS_STORAGE_KEY, JSON.stringify(allStatuses));
+    alert("Patient file & consent status save ho gaya hai.");
+  };
+
+  window.printPatientFileChecklist = function() {
+    window.print();
+  };
+
+  if (typeof window.showDashboard === "function") {
+    const origShowDashboard = window.showDashboard;
+    window.showDashboard = function() {
+      const res = origShowDashboard.apply(this, arguments);
+      window.openPatientFilePanel(activePatientKey);
+      return res;
+    };
+  }
+
+  document.addEventListener("DOMContentLoaded", function() {
+    window.openPatientFilePanel(activePatientKey);
+  });
+})();
+</script>
 </body>
 </html>
