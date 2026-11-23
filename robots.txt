@@ -1,0 +1,5 @@
+User-agent: *
+Allow: /
+Disallow: /admin.html
+
+Sitemap: https://kapoorhomecare.github.io/KAPOOR_HOME_CARE/sitemap.xml
