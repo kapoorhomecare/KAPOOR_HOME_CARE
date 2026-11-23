@@ -512,7 +512,326 @@
         </span>
       </div>
       <div class="topbar-actions">
-        
+        <a class="top-phone" href="tel:6397053265">
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor">
+            <path d="M6.62 10.79a15.05 15.05 0 0 0 6.59 6.59l2.2-2.2a1 1 0 0 1 1.01-.24c1.12.37 2.33.57 3.58.57a1 1 0 0 1 1 1V20a1 1 0 0 1-1 1C10.61 21 3 13.39 3 4a1 1 0 0 1 1-1h3.5a1 1 0 0 1 1 1c0 1.25.2 2.46.57 3.58a1 1 0 0 1-.24 1.01l-2.21 2.2z"/>
+          </svg>
+          6397053265
+        </a>
+        <div class="mode-switch">
+          <a class="mode-btn active" href="index.html">
+            <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2">
+              <circle cx="12" cy="12" r="10"/><path d="M2 12h20M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/>
+            </svg>
+            Public Site
+          </a>
+          <a class="mode-btn" href="admin.html">
+            <svg width="11" height="11" viewBox="0 0 24 24" fill="currentColor">
+              <path d="M12 12a4 4 0 1 0-4-4 4 4 0 0 0 4 4zm0 2c-4.42 0-8 2.01-8 4.5V21h16v-2.5c0-2.49-3.58-4.5-8-4.5z"/>
+            </svg>
+            Admin Panel
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <header>
+    <div class="nav-wrap">
+      <a class="brand" href="index.html">
+        <svg width="42" height="42" viewBox="0 0 48 48" fill="none">
+          <path d="M24 4L5 19v23a3 3 0 0 0 3 3h32a3 3 0 0 0 3-3V19L24 4z" stroke="#082954" stroke-width="3.2" stroke-linejoin="round"/>
+          <path d="M24 38.5s-10-6.4-10-13.2a6.2 6.2 0 0 1 10-4.9 6.2 6.2 0 0 1 10 4.9c0 6.8-10 13.2-10 13.2z" fill="#d91c24"/>
+          <path d="M16.5 25.5h4l2-4.5 3 9 2-4.5h4" stroke="#ffffff" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+        <div>
+          <div class="brand-title">KAPOOR</div>
+          <div class="brand-sub">HOME CARE</div>
+        </div>
+      </a>
+      <button class="menu-btn" id="menuToggle" aria-label="Toggle menu">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4">
+          <path d="M3 6h18M3 12h18M3 18h18"/>
+        </svg>
+      </button>
+    </div>
+    <div class="mobile-drawer" id="mobileDrawer">
+      <a href="#services">Services &amp; Pricing</a>
+      <a href="#booking">Book Home Care</a>
+      <a href="tel:6397053265">Call Helpline: 6397053265</a>
+      <a href="admin.html">Admin Panel (PIN Required)</a>
+    </div>
+  </header>
+
+  <div class="container">
+    <div class="desk-grid-top">
+      <section class="hero">
+        <div class="hero-badge">24*7 EMERGENCY HOME VISIT &bull; FARIDABAD</div>
+        <h1>Hospital-Grade <span class="red">ICU &amp; Home Care</span> in Faridabad</h1>
+        <p class="tagline">Care at Home, Comfort with Dignity</p>
+        <p class="hero-desc">
+          Round-the-clock <strong>ICU &amp; Ventilator Management Care</strong>, IV Injection &amp; Dressing, Medications Management, Tracheostomy &amp; Feeding Care, Urinary Catheter Care, Vitals &amp; Oxygen Monitoring, Nursing &amp; Elderly Care, Patient Attendant &amp; Physiotherapy, and Medical Equipment Rental.
+        </p>
+        <div class="cta-stack">
+          <a class="btn-main btn-navy" href="#booking" onclick="selectService('ICU & Ventilator Management Care')">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
+              <path d="M19 4h-1V2h-2v2H8V2H6v2H5a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6a2 2 0 0 0-2-2zm0 16H5V9h14v11zm-6-8v-2h-2v2H9v2h2v2h2v-2h2v-2h-2z"/>
+            </svg>
+            Book Home Care Now
+          </a>
+          <a class="btn-main btn-red" href="tel:6397053265">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
+              <path d="M6.62 10.79a15.05 15.05 0 0 0 6.59 6.59l2.2-2.2a1 1 0 0 1 1.01-.24c1.12.37 2.33.57 3.58.57a1 1 0 0 1 1 1V20a1 1 0 0 1-1 1C10.61 21 3 13.39 3 4a1 1 0 0 1 1-1h3.5a1 1 0 0 1 1 1c0 1.25.2 2.46.57 3.58a1 1 0 0 1-.24 1.01l-2.21 2.2z"/>
+            </svg>
+            Call: 6397053265
+          </a>
+          <a class="btn-main btn-green" href="https://wa.me/916397053265?text=Hello%20Kapoor%20Home%20Care%2C%20I%20need%20home%20care%20assistance%20in%20Faridabad." target="_blank" rel="noopener">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
+              <path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.45 1.32 4.95L2.05 22l5.25-1.38c1.45.79 3.08 1.21 4.74 1.21 5.46 0 9.91-4.45 9.91-9.91S17.5 2 12.04 2zm5.75 14.06c-.24.68-1.4 1.3-1.93 1.38-.5.08-1.13.11-1.82-.11-.42-.13-.96-.31-1.66-.61-2.92-1.26-4.83-4.2-4.97-4.4-.15-.2-1.19-1.58-1.19-3.01s.75-2.13 1.02-2.42c.27-.29.59-.36.78-.36.2 0 .39 0 .56.01.18.01.42-.07.66.5.24.58.82 2 .89 2.15.07.15.12.32.02.52-.1.2-.15.32-.3.5-.15.17-.31.39-.45.52-.15.15-.3.31-.13.6.17.29.76 1.25 1.63 2.02 1.12 1 2.07 1.31 2.36 1.46.29.15.46.12.63-.07.17-.2.73-.85.92-1.14.2-.29.39-.24.66-.15.27.1 1.71.81 2 .95.29.15.49.22.56.34.07.12.07.71-.17 1.39z"/>
+            </svg>
+            WhatsApp
+          </a>
+        </div>
+      </section>
+
+      <aside class="desk-card">
+        <div class="desk-header">
+          <div class="desk-pill">24*7 CLINICAL &amp; NURSING DESK</div>
+          <h2>Immediate Home Care Support</h2>
+          <p>Synced live with our Admin &amp; Dispatch Desk</p>
+        </div>
+        <div class="desk-body">
+          <div class="quick-list">
+            <a class="quick-item" href="#booking" onclick="selectService('ICU & Ventilator Care')">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="#d91c24">
+                <path d="M11 4h2v9h-2V4zm-1 3c-3.5 0-6 3.5-6 8.5V19h6V7zm4 0v12h6v-3.5C20 10.5 17.5 7 14 7z"/>
+              </svg>
+              ICU &amp; Ventilator Care
+            </a>
+            <a class="quick-item" href="#booking" onclick="selectService('IV Injection & Dressing')">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="#1d6fd8">
+                <path d="M19.7 4.3l-1.4-1.4-1.8 1.8-1.4-1.4-1.4 1.4 1.4 1.4-6.4 6.4 4.2 4.2 6.4-6.4 1.4 1.4 1.4-1.4-1.4-1.4 1.8-1.8zM7.3 13.9L4 17.2V20h2.8l3.3-3.3-2.8-2.8z"/>
+              </svg>
+              IV Injection &amp; Dressing
+            </a>
+            <a class="quick-item" href="#booking" onclick="selectService('Medications Management')">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="#0d8a72">
+                <path d="M10.5 4.5a5.3 5.3 0 0 1 7.5 7.5l-4 4a5.3 5.3 0 0 1-7.5-7.5l4-4zm2.1 2.1L9.4 9.8l4.8 4.8 3.2-3.2a2.3 2.3 0 0 0-3.2-3.2z"/>
+              </svg>
+              Medications Management
+            </a>
+            <a class="quick-item" href="#booking" onclick="selectService('Tracheostomy & Feeding')">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="#d91c24">
+                <rect x="3" y="6" width="18" height="12" rx="3" fill="none" stroke="currentColor" stroke-width="2.2"/>
+                <circle cx="12" cy="12" r="2.5"/>
+              </svg>
+              Tracheostomy &amp; Feeding
+            </a>
+            <a class="quick-item" href="#booking" onclick="selectService('Urinary Catheter Care')">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="#1d6fd8">
+                <rect x="5" y="4" width="14" height="16" rx="3"/>
+                <path d="M12 9v6M9 12h6" stroke="#fff" stroke-width="2.2" stroke-linecap="round"/>
+              </svg>
+              Urinary Catheter Care
+            </a>
+            <a class="quick-item" href="#booking" onclick="selectService('Equipment Rental')">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="#d91c24">
+                <path d="M3 10h18v7h-2v-3H5v3H3v-7zm4-3h4v2H7V7z"/>
+              </svg>
+              Equipment Rental
+            </a>
+          </div>
+
+          <div class="helpline-box">
+            <div class="helpline-label">24*7 HELPLINE &bull; FARIDABAD</div>
+            <div class="helpline-num">6397053265</div>
+            <a class="btn-main btn-red" href="#booking">Book Service</a>
+          </div>
+        </div>
+        <div class="desk-footer-banner">
+          YOUR HEALTH, OUR PRIORITY &bull; CARE AT HOME, COMFORT WITH DIGNITY
+        </div>
+      </aside>
+    </div>
+
+    <section id="services">
+      <div class="section-head">
+        <h2>Home Care Services &amp; Transparent Pricing</h2>
+      </div>
+      <div class="services-grid">
+        <article class="service-card">
+          <div>
+            <div class="card-top">
+              <div class="icon-box">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor">
+                  <path d="M11 4h2v9h-2V4zm-1 3c-3.5 0-6 3.5-6 8.5V19h6V7zm4 0v12h6v-3.5C20 10.5 17.5 7 14 7z"/>
+                </svg>
+              </div>
+              <div class="badges">
+                <span class="badge-red">24*7</span>
+                <span class="badge-blue">24*7 Critical Care</span>
+              </div>
+            </div>
+            <h3>ICU &amp; Ventilator Management Care</h3>
+            <div class="price-line">&#8377;2,800 / 12Hr &bull; &#8377;5,200 / 24Hr</div>
+            <p>Round-the-clock ICU-trained nurses for home ventilators, suctioning, oxygen titration, and critical monitoring.</p>
+          </div>
+          <button class="book-link-btn" onclick="goBook('ICU & Ventilator Management Care')">Book ICU &amp; Ventilator Management Care &rarr;</button>
+        </article>
+
+        <article class="service-card">
+          <div>
+            <div class="card-top">
+              <div class="icon-box">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor">
+                  <path d="M19.7 4.3l-1.4-1.4-1.8 1.8-1.4-1.4-1.4 1.4 1.4 1.4-6.4 6.4 4.2 4.2 6.4-6.4 1.4 1.4 1.4-1.4-1.4-1.4 1.8-1.8zM7.3 13.9L4 17.2V20h2.8l3.3-3.3-2.8-2.8z"/>
+                </svg>
+              </div>
+              <div class="badges">
+                <span class="badge-red">24*7</span>
+                <span class="badge-blue">Clinical Care</span>
+              </div>
+            </div>
+            <h3>IV Injection &amp; Dressing</h3>
+            <div class="price-line">&#8377;450 / Home Visit</div>
+            <p>Safe IV/IM injections, IV cannulation, drip infusion, surgical dressing, and sterile wound care at home.</p>
+          </div>
+          <button class="book-link-btn" onclick="goBook('IV Injection & Dressing')">Book IV Injection &amp; Dressing &rarr;</button>
+        </article>
+
+        <article class="service-card">
+          <div>
+            <div class="card-top">
+              <div class="icon-box">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor">
+                  <path d="M10.5 4.5a5.3 5.3 0 0 1 7.5 7.5l-4 4a5.3 5.3 0 0 1-7.5-7.5l4-4zm2.1 2.1L9.4 9.8l4.8 4.8 3.2-3.2a2.3 2.3 0 0 0-3.2-3.2z"/>
+                </svg>
+              </div>
+              <div class="badges">
+                <span class="badge-red">24*7</span>
+                <span class="badge-blue">Medication Care</span>
+              </div>
+            </div>
+            <h3>Medications Management</h3>
+            <div class="price-line">&#8377;950 / Day Plan</div>
+            <p>Timely prescription medicine administration, insulin &amp; nebulization, and daily medication chart tracking.</p>
+          </div>
+          <button class="book-link-btn" onclick="goBook('Medications Management')">Book Medications Management &rarr;</button>
+        </article>
+
+        <article class="service-card">
+          <div>
+            <div class="card-top">
+              <div class="icon-box">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2">
+                  <rect x="3" y="6" width="18" height="12" rx="3"/>
+                  <circle cx="12" cy="12" r="2.5" fill="currentColor"/>
+                </svg>
+              </div>
+              <div class="badges">
+                <span class="badge-red">24*7</span>
+                <span class="badge-blue">Airway &amp; Nutrition</span>
+              </div>
+            </div>
+            <h3>Tracheostomy &amp; Feeding Care</h3>
+            <div class="price-line">&#8377;1,600 / 12Hr Shift</div>
+            <p>Tracheostomy hygiene &amp; airway suctioning, Ryle&rsquo;s tube / PEG feeding, and aspiration prevention.</p>
+          </div>
+          <button class="book-link-btn" onclick="goBook('Tracheostomy & Feeding Care')">Book Tracheostomy &amp; Feeding Care &rarr;</button>
+        </article>
+
+        <article class="service-card">
+          <div>
+            <div class="card-top">
+              <div class="icon-box">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor">
+                  <rect x="5" y="4" width="14" height="16" rx="3"/>
+                  <path d="M12 9v6M9 12h6" stroke="#082954" stroke-width="2.2" stroke-linecap="round"/>
+                </svg>
+              </div>
+              <div class="badges">
+                <span class="badge-red">24*7</span>
+                <span class="badge-blue">Clinical Care</span>
+              </div>
+            </div>
+            <h3>Urinary Catheter Care</h3>
+            <div class="price-line">&#8377;650 / Procedure &amp; Visit</div>
+            <p>Aseptic Foley catheter insertion, replacement, removal, urine output tracking, and catheter hygiene.</p>
+          </div>
+          <button class="book-link-btn" onclick="goBook('Urinary Catheter Care')">Book Urinary Catheter Care &rarr;</button>
+        </article>
+
+        <article class="service-card">
+          <div>
+            <div class="card-top">
+              <div class="icon-box">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor">
+                  <path d="M12 20.5s-8.5-5.5-8.5-11.5A5.2 5.2 0 0 1 12 4.8a5.2 5.2 0 0 1 8.5 4.2c0 6-8.5 11.5-8.5 11.5z"/>
+                  <path d="M7.5 11.5h2.5l1.5-3 2 6 1.5-3h2.5" fill="none" stroke="#082954" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+              </div>
+              <div class="badges">
+                <span class="badge-red">24*7</span>
+                <span class="badge-blue">24*7 Monitoring</span>
+              </div>
+            </div>
+            <h3>Vitals &amp; Oxygen Monitoring</h3>
+            <div class="price-line">&#8377;750 / Daily Plan</div>
+            <p>Continuous BP, SpO2 oxygen saturation, pulse, temperature, blood sugar &amp; oxygen therapy monitoring.</p>
+          </div>
+          <button class="book-link-btn" onclick="goBook('Vitals & Oxygen Monitoring')">Book Vitals &amp; Oxygen Monitoring &rarr;</button>
+        </article>
+      </div>
+    </section>
+
+    <section class="booking-box" id="booking">
+      <h2>Book Home Care Service in Faridabad</h2>
+      <p class="sub">Fill details below — bookings save locally in browser storage and appear in Admin Panel.</p>
+      <form id="bookingForm">
+        <div class="form-grid">
+          <div class="form-group">
+            <label for="patientName">Patient / Attendant Name *</label>
+            <input type="text" id="patientName" required placeholder="Enter full name" />
+          </div>
+          <div class="form-group">
+            <label for="phoneInput">Phone Number *</label>
+            <input type="tel" id="phoneInput" required placeholder="10-digit mobile number" />
+          </div>
+          <div class="form-group">
+            <label for="serviceSelect">Service *</label>
+            <select id="serviceSelect" required>
+              <option value="ICU & Ventilator Management Care">ICU &amp; Ventilator Management Care (₹2,800 / 12Hr • ₹5,200 / 24Hr)</option>
+              <option value="IV Injection & Dressing">IV Injection &amp; Dressing (₹450 / Home Visit)</option>
+              <option value="Medications Management">Medications Management (₹950 / Day Plan)</option>
+              <option value="Tracheostomy & Feeding Care">Tracheostomy &amp; Feeding Care (₹1,600 / 12Hr Shift)</option>
+              <option value="Urinary Catheter Care">Urinary Catheter Care (₹650 / Procedure &amp; Visit)</option>
+              <option value="Vitals & Oxygen Monitoring">Vitals &amp; Oxygen Monitoring (₹750 / Daily Plan)</option>
+              <option value="Equipment Rental">Equipment Rental</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="localityInput">Locality in Faridabad *</label>
+            <input type="text" id="localityInput" required placeholder="e.g. Sector 15, NIT, Greenfields" />
+          </div>
+        </div>
+        <div class="form-group" style="margin-top:12px;">
+          <label for="notesInput">Condition / Notes</label>
+          <textarea id="notesInput" rows="2" placeholder="Preferred timing, patient condition, or equipment needed..."></textarea>
+        </div>
+        <div style="margin-top:14px;">
+          <button type="submit" class="btn-main btn-red" style="max-width:260px;">Submit Booking Request</button>
+        </div>
+      </form>
+      <div class="status-msg ok" id="bookingStatus"></div>
+    </section>
+  </div>
+
+  <div class="float-stack">
+    <a class="float-btn float-wa" href="https://wa.me/916397053265?text=Hello%20Kapoor%20Home%20Care%2C%20I%20want%20to%20book%20home%20care%20in%20Faridabad." target="_blank" rel="noopener" aria-label="WhatsApp">
+      <svg width="26" height="26" viewBox="0 0 24 24" fill="currentColor">
+        <path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.45 1.32 4.95L2.05 22l5.25-1.38c1.45.79 3.08 1.21 4.74 1.21 5.46 0 9.91-4.45 9.91-9.91S17.5 2 12.04 2zm5.75 14.06c-.24.68-1.4 1.3-1.93 1.38-.5.08-1.13.11-1.82-.11-.42-.13-.96-.31-1.66-.61-2.92-1.26-4.83-4.2-4.97-4.4-.15-.2-1.19-1.58-1.19-3.01s.75-2.13 1.02-2.42c.27-.29.59-.36.78-.36.2 0 .39 0 .56.01.18.01.42-.07.66.5.24.58.82 2 .89 2.15.07.15.12.32.02.52-.1.2-.15.32-.3.5-.15.17-.31.39-.45.52-.15.15-.3.31-.13.6.17.29.76 1.25 1.63 2.02 1.12 1 2.07 1.31 2.36 1.46.29.15.46.12.63-.07.17-.2.73-.85.92-1.14.2-.29.39-.24.66-.15.27.1 1.71.81 2 .95.29.15.49.22.56.34.07.12.07.71-.17 1.39z"/>
+      </svg>
+    </a>
     <a class="float-btn float-call" href="tel:6397053265" aria-label="Call 6397053265">
       <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor">
         <path d="M6.62 10.79a15.05 15.05 0 0 0 6.59 6.59l2.2-2.2a1 1 0 0 1 1.01-.24c1.12.37 2.33.57 3.58.57a1 1 0 0 1 1 1V20a1 1 0 0 1-1 1C10.61 21 3 13.39 3 4a1 1 0 0 1 1-1h3.5a1 1 0 0 1 1 1c0 1.25.2 2.46.57 3.58a1 1 0 0 1-.24 1.01l-2.21 2.2z"/>
