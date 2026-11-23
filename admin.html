@@ -537,8 +537,37 @@
 
     function getBookings() {
       try {
-        const list = JSON.parse(localStorage.getItem(STORAGE_KEY) || "[]");
-        return Array.isArray(list) ? list : [];
+        const primary = JSON.parse(localStorage.getItem(STORAGE_KEY) || "[]");
+        const legacy = JSON.parse(localStorage.getItem("kapoorHomeCareBookings") || "[]");
+        const pArr = Array.isArray(primary) ? primary : [];
+        const lArr = Array.isArray(legacy) ? legacy : [];
+        if (!lArr.length) return pArr;
+
+        const seen = new Set(pArr.map(item => item && (item.id || item.fileNo)).filter(Boolean));
+        let merged = false;
+        const combined = [...pArr];
+        for (const item of lArr) {
+          if (!item) continue;
+          const key = item.id || item.fileNo || `${item.patientName || item.name || ""}|${item.phone || ""}|${item.createdAt || ""}`;
+          if (!seen.has(key)) {
+            seen.add(key);
+            const pName = item.name || item.patientName || "Patient";
+            combined.push({
+              ...item,
+              fileNo: item.fileNo || item.id || `KHC-${Date.now().toString().slice(-6)}`,
+              name: pName,
+              patientName: pName,
+              address: item.address || (item.locality ? `${item.locality}, Faridabad` : "Faridabad"),
+              diagnosis: item.diagnosis || item.notes || "",
+              status: item.status || "Pending"
+            });
+            merged = true;
+          }
+        }
+        if (merged) {
+          localStorage.setItem(STORAGE_KEY, JSON.stringify(combined));
+        }
+        return combined;
       } catch {
         return [];
       }
@@ -785,6 +814,7 @@
     function clearAll() {
       if (!confirm("Delete all admission files and bookings?")) return;
       localStorage.removeItem(STORAGE_KEY);
+      localStorage.removeItem("kapoorHomeCareBookings");
       renderBookings();
     }
 

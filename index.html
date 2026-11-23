@@ -856,20 +856,37 @@
 
     document.getElementById("bookingForm").addEventListener("submit", function (e) {
       e.preventDefault();
+      const bookingId = "KHC-" + Date.now().toString().slice(-6);
+      const pName = document.getElementById("patientName").value.trim();
+      const pPhone = document.getElementById("phoneInput").value.trim();
+      const pService = document.getElementById("serviceSelect").value;
+      const pLocality = document.getElementById("localityInput").value.trim();
+      const pNotes = document.getElementById("notesInput").value.trim();
+      const todayISO = new Date().toISOString().slice(0, 10);
+
       const entry = {
-        id: "KHC-" + Date.now().toString().slice(-6),
+        id: bookingId,
+        fileNo: bookingId,
         createdAt: new Date().toLocaleString("en-IN"),
-        patientName: document.getElementById("patientName").value.trim(),
-        phone: document.getElementById("phoneInput").value.trim(),
-        service: document.getElementById("serviceSelect").value,
-        locality: document.getElementById("localityInput").value.trim(),
-        notes: document.getElementById("notesInput").value.trim(),
+        name: pName,
+        patientName: pName,
+        phone: pPhone,
+        service: pService,
+        locality: pLocality,
+        address: pLocality ? `${pLocality}, Faridabad` : "Faridabad",
+        startDate: todayISO,
+        notes: pNotes,
+        diagnosis: pNotes,
         status: "Pending"
       };
 
       const existing = JSON.parse(localStorage.getItem(STORAGE_KEY) || "[]");
       existing.unshift(entry);
       localStorage.setItem(STORAGE_KEY, JSON.stringify(existing));
+
+      const adminList = JSON.parse(localStorage.getItem("khc_bookings") || "[]");
+      adminList.unshift(entry);
+      localStorage.setItem("khc_bookings", JSON.stringify(adminList));
 
       const statusEl = document.getElementById("bookingStatus");
       statusEl.textContent = `Booking saved (${entry.id}) for ${entry.patientName} — ${entry.service}. Our Faridabad desk (6397053265) will assist shortly.`;
