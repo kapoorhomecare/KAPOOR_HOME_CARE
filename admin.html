@@ -437,6 +437,13 @@
               <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="23 4 23 10 17 10"/><path d="M20.49 15a9 9 0 1 1-2.12-9.36L23 10"/></svg>
               Refresh
             </button>
+            <button class="btn btn-light btn-sm" onclick="exportAllData()">
+              Export Backup
+            </button>
+            <button class="btn btn-light btn-sm" onclick="triggerImportBackup()">
+              Restore Backup
+            </button>
+            <input type="file" id="importBackupFile" accept=".json,application/json" style="display:none;" onchange="importAllData(event)" />
             <button class="btn btn-red btn-sm" onclick="clearAll()">
               <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="3 6 5 6 21 6"/><path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"/></svg>
               Clear All
@@ -947,6 +954,58 @@
           err.textContent = `Invalid password (${failedAttempts}/5). Please try again.`;
         }
       }
+    }
+
+    
+    function exportAllData() {
+      const dump = {};
+      for (let i = 0; i < localStorage.length; i++) {
+        const k = localStorage.key(i);
+        if (k && !k.startsWith("khc_admin_")) {
+          dump[k] = localStorage.getItem(k);
+        }
+      }
+      const blob = new Blob([JSON.stringify(dump, null, 2)], { type: "application/json" });
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement("a");
+      const dateStr = new Date().toISOString().slice(0, 10);
+      a.href = url;
+      a.download = `kapoor-home-care-backup-${dateStr}.json`;
+      document.body.appendChild(a);
+      a.click();
+      document.body.removeChild(a);
+      URL.revokeObjectURL(url);
+    }
+
+    function triggerImportBackup() {
+      const input = document.getElementById("importBackupFile");
+      if (input) input.click();
+    }
+
+    function importAllData(event) {
+      const file = event.target.files && event.target.files[0];
+      if (!file) return;
+      const reader = new FileReader();
+      reader.onload = function(e) {
+        try {
+          const data = JSON.parse(e.target.result);
+          if (!data || typeof data !== "object") {
+            alert("Invalid backup file.");
+            return;
+          }
+          Object.keys(data).forEach(k => {
+            if (!k.startsWith("khc_admin_")) {
+              localStorage.setItem(k, data[k]);
+            }
+          });
+          alert("Backup restored successfully! Page will reload now.");
+          location.reload();
+        } catch (err) {
+          alert("Could not read backup file: " + err.message);
+        }
+      };
+      reader.readAsText(file);
+      event.target.value = "";
     }
 
     function lockPanel() {
