@@ -1,0 +1,39 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 160" width="640" height="160" role="img" aria-label="Kapoor Home Care Logo">
+  <defs>
+    <linearGradient id="khcNavy" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0f294a"/>
+      <stop offset="100%" stop-color="#1d4ed8"/>
+    </linearGradient>
+    <linearGradient id="khcTeal" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0d9488"/>
+      <stop offset="100%" stop-color="#14b8a6"/>
+    </linearGradient>
+  </defs>
+
+  <!-- Soft Background Pill -->
+  <rect x="4" y="8" width="632" height="144" rx="24" fill="#ffffff" stroke="#e2e8f0" stroke-width="2"/>
+
+  <!-- Emblem Badge -->
+  <g transform="translate(24, 22)">
+    <rect x="0" y="0" width="116" height="116" rx="24" fill="url(#khcNavy)"/>
+    <!-- Home Roof Accent -->
+    <path d="M58 18L20 48v8h8v38h60V56h8v-8L58 18z" fill="#ffffff" opacity="0.14"/>
+    <!-- Medical Cross + Heart Care Emblem -->
+    <path d="M58 28L30 39v19c0 18.5 11.9 35.8 28 40 16.1-4.2 28-21.5 28-40V39L58 28z" fill="none" stroke="#5eead4" stroke-width="3.5" stroke-linejoin="round"/>
+    <rect x="53.5" y="45" width="9" height="27" rx="2.5" fill="#ffffff"/>
+    <rect x="44.5" y="54" width="27" height="9" rx="2.5" fill="#ffffff"/>
+    <circle cx="94" cy="22" r="10" fill="url(#khcTeal)"/>
+    <path d="M94 17.5v9M89.5 22h9" stroke="#ffffff" stroke-width="2.5" stroke-linecap="round"/>
+  </g>
+
+  <!-- Brand Typography -->
+  <text x="162" y="68" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif" font-size="34" font-weight="800" fill="#0f294a" letter-spacing="-0.5">
+    KAPOOR HOME CARE
+  </text>
+  <text x="164" y="100" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif" font-size="16" font-weight="600" fill="#0d9488" letter-spacing="0.4">
+    NURSING • ICU &amp; ELDER CARE • FARIDABAD
+  </text>
+  <text x="164" y="128" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif" font-size="14" font-weight="600" fill="#475569">
+    24×7 Care Desk &amp; Helpline: +91 6397053265
+  </text>
+</svg>
